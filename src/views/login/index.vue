@@ -7,6 +7,7 @@
       />
       <div class="logo-text">Arco Design Pro</div>
     </div>
+    <!--  引入登录导航栏组件  -->
     <LoginBanner />
     <div class="content">
       <div class="content-inner">
