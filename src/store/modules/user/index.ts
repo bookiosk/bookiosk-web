@@ -56,7 +56,6 @@ const useUserStore = defineStore('user', {
     // Get user's information
     async info() {
       const res = await getUserInfo();
-
       this.setInfo(res.data);
     },
 
@@ -64,7 +63,7 @@ const useUserStore = defineStore('user', {
     async login(loginForm: LoginData) {
       try {
         const res = await userLogin(loginForm);
-        setToken(res.data.token);
+        setToken(res.data);
       } catch (err) {
         clearToken();
         throw err;

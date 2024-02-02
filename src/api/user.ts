@@ -3,15 +3,15 @@ import type { RouteRecordNormalized } from 'vue-router';
 import { UserState } from '@/store/modules/user/types';
 
 export interface LoginData {
-  username: string;
-  password: string;
+  userAccount: string;
+  userPassword: string;
 }
 
 export interface LoginRes {
   token: string;
 }
 export function login(data: LoginData) {
-  return axios.post<LoginRes>('/user/login', data);
+  return axios.post<string>('/user/login', data);
 }
 
 export function logout() {
@@ -19,7 +19,7 @@ export function logout() {
 }
 
 export function getUserInfo() {
-  return axios.post<UserState>('/user/info');
+  return axios.get<UserState>('/user/info');
 }
 
 export function getMenuList() {
