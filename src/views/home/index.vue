@@ -21,6 +21,7 @@
   import Footer from '@/components/footer/index.vue';
   import LoginBanner from './components/banner.vue';
   import LoginForm from './components/login-form.vue';
+  import RegisterForm from './components/register-form.vue';
 </script>
 
 <style lang="less" scoped>
