@@ -14,6 +14,19 @@ export default mergeConfig(
       configArcoResolverPlugin(),
       configImageminPlugin(),
     ],
+    // 代理跨域
+    server: {
+      proxy: {
+        '/api': {
+          // 获取数据的服务器地址设置
+          target: 'http://localhost:8101',
+          // 需要代理跨域
+          changeOrigin: true,
+          // 路径重写
+          rewrite: (path: string) => path.replace(/^\/api/, '/prod-api'),
+        },
+      },
+    },
     build: {
       rollupOptions: {
         output: {

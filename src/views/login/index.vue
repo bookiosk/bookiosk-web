@@ -1,11 +1,8 @@
 <template>
   <div class="container">
     <div class="logo">
-      <img
-        alt="logo"
-        src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
-      />
-      <div class="logo-text">Arco Design Pro</div>
+      <img alt="logo" src="/src/assets/png.ico" height="30" width="30" />
+      <div class="logo-text" style="padding-left: 10px">Book Kiosk Pro</div>
     </div>
     <!--  引入登录导航栏组件  -->
     <LoginBanner />
