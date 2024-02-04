@@ -1,7 +1,6 @@
 <template>
   <div class="register-form-wrapper">
     <a-form
-      ref="formRef"
       :model="form"
       style="width: 300px"
       :rules="rules"
@@ -17,6 +16,7 @@
         <a-button type="primary" long html-type="submit">获取验证码</a-button>
       </a-form-item>
     </a-form>
+    <a-modal v-model:visible="visible" title="Modal Form"></a-modal>
   </div>
 </template>
 
@@ -25,10 +25,8 @@
   import { ValidatedError } from '@arco-design/web-vue/es/form/interface';
 
   const emit = defineEmits(['changeForm']);
-  const formRef = ref(null);
-  const form = ref({
-    email: '',
-  });
+  const visible = ref(false);
+  const form = ref({ email: '' });
   // 表单校验规则
   const rules = {
     email: [
@@ -46,7 +44,8 @@
     values: Record<string, any>;
   }) => {
     if (errors) return;
-    emit('changeForm', 'loginForm');
+    visible.value = true;
+    // emit('changeForm', 'loginForm');
   };
 </script>
 
