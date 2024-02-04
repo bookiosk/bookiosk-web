@@ -1,7 +1,7 @@
 <template>
   <div class="register-form-wrapper">
     <a-button type="primary" long @click="handleChange('loginForm')"
-      >注册</a-button
+      >忘记</a-button
     >
   </div>
 </template>

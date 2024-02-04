@@ -1,4 +1,4 @@
-x<template>
+<template>
   <div class="login-form-wrapper">
     <div class="login-form-title">{{ $t('login.form.title') }}</div>
     <div class="login-form-sub-title">{{ $t('login.form.sub.title') }}</div>
@@ -50,12 +50,19 @@ x<template>
           >
             {{ $t('login.form.rememberPassword') }}
           </a-checkbox>
-          <a-link>{{ $t('login.form.forgetPassword') }}</a-link>
+          <a-link @click="handleChange('forgetForm')">{{
+            $t('login.form.forgetPassword')
+          }}</a-link>
         </div>
         <a-button type="primary" html-type="submit" long :loading="loading">
           {{ $t('login.form.login') }}
         </a-button>
-        <a-button type="text" long class="login-form-register-btn">
+        <a-button
+          type="text"
+          long
+          class="login-form-register-btn"
+          @click="handleChange('registerForm')"
+        >
           {{ $t('login.form.register') }}
         </a-button>
       </a-space>
@@ -64,7 +71,7 @@ x<template>
 </template>
 
 <script lang="ts" setup>
-  import { ref, reactive } from 'vue';
+  import { ref, reactive, defineEmits } from 'vue';
   import { useRouter } from 'vue-router';
   import { Message } from '@arco-design/web-vue';
   import { ValidatedError } from '@arco-design/web-vue/es/form/interface';
@@ -79,7 +86,6 @@ x<template>
   const errorMessage = ref('');
   const { loading, setLoading } = useLoading();
   const userStore = useUserStore();
-
   // 待了解
   const loginConfig = useStorage('login-config', {
     rememberPassword: true,
@@ -90,6 +96,11 @@ x<template>
     userAccount: loginConfig.value.userAccount,
     userPassword: loginConfig.value.userPassword,
   });
+
+  const emit = defineEmits(['changeForm']);
+  const handleChange = (value: string) => {
+    emit('changeForm', value);
+  };
 
   const handleSubmit = async ({
     errors,

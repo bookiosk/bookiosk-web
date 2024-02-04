@@ -8,7 +8,18 @@
     <LoginBanner />
     <div class="content">
       <div class="content-inner">
-        <LoginForm />
+        <LoginForm
+          v-show="currentForm === 'loginForm'"
+          @change-form="changeForm"
+        />
+        <RegisterForm
+          v-show="currentForm === 'registerForm'"
+          @change-form="changeForm"
+        />
+        <ForgetForm
+          v-show="currentForm === 'forgetForm'"
+          @change-form="changeForm"
+        />
       </div>
       <div class="footer">
         <Footer />
@@ -19,9 +30,18 @@
 
 <script lang="ts" setup>
   import Footer from '@/components/footer/index.vue';
+  import { ref } from 'vue';
+  import ForgetForm from '@/views/home/components/forget-form.vue';
   import LoginBanner from './components/banner.vue';
   import LoginForm from './components/login-form.vue';
   import RegisterForm from './components/register-form.vue';
+
+  const currentForm = ref('loginForm');
+
+  // eslint-disable-next-line func-names
+  const changeForm = function (formName: string) {
+    currentForm.value = formName;
+  };
 </script>
 
 <style lang="less" scoped>
